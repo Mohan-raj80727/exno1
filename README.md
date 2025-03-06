@@ -1,5 +1,4 @@
-# Exno:1
-Data Cleaning Process
+### Ex. 1 Data Cleaning and Outlier Detection & Removal
 
 # AIM
 To read the given data and perform data cleaning and save the cleaned data to a file.
@@ -83,19 +82,66 @@ iqr=q3-q1
 print(iqr)
 ~~~
 ![image](https://github.com/user-attachments/assets/a1723ce4-7b65-4d23-ab6d-fc54bbb0f24d)
+~~~
+outlier=ir[((ir.sepal_width<(q1-1.5*iqr))|(ir.sepal_width>(q3+1.5*iqr)))]
+outlier['sepal_width']
+~~~
+![image](https://github.com/user-attachments/assets/0c50b222-6146-490d-8b1e-fcda1ed2eb95)
+~~~
+o=ir[~((ir.sepal_width<(q1-1.5*iqr))|(ir.sepal_width>(q3+1.5*iqr)))]
+print(o)
+~~~
+![image](https://github.com/user-attachments/assets/0abfcdf7-74b6-472d-befa-f1708592e2f1)
+~~~
+sns.boxplot(x='sepal_width',data=o)
+~~~
+![image](https://github.com/user-attachments/assets/af2961e6-389c-405b-a72c-42e9c9721bdf)
 
+Z-Score
 
+~~~
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import scipy.stats as stats
+data_set=pd.read_csv("/content/heights.csv")
+data_set
+~~~
+![image](https://github.com/user-attachments/assets/416eef78-2fbe-4a79-8440-5f03cb87d5c1)
+~~~
+z=pd.read_csv("/content/heights.csv")
+q1=z['height'].quantile(0.25)
+q2=z['height'].quantile(0.50)
+q3=z['height'].quantile(0.75)
+iqr=q3-q1
+print(iqr)
+~~~
+![image](https://github.com/user-attachments/assets/0175302b-65ed-4d46-9418-f3b72263dc0e)
+~~~
+low = q1-1.5*iqr
+print(low)
+~~~
+![image](https://github.com/user-attachments/assets/7d5f05c5-3ebd-41e9-8357-aa66dbed5a83)
+~~~
+high = q3+1.5*iqr
+print(high)
+~~~
+![image](https://github.com/user-attachments/assets/3bbfc5e0-098a-4fb8-bd6d-ba1a7ba09adc)
+~~~
+z1=z[((z['height']>=low)&(z['height']<=high))]
+z1
+~~~
+![image](https://github.com/user-attachments/assets/ca0e2ed1-073e-4e53-a485-9f06e0e72c34)
+~~~
+z=np.abs(stats.zscore(z['height']))
+z
+~~~
+![image](https://github.com/user-attachments/assets/dc185b03-f8d1-4326-91d8-ab18d8ba9c2d)
+~~~
+z1=z[z<3]
+z1
+~~~
+![image](https://github.com/user-attachments/assets/02a045df-0269-46db-80a0-19340cd1591d)
 
-
-
-
-
-
-
-
-
-
-
-            <<include your coding and its corressponding output screen shots here>>
 # Result
-          <<include your Result here>>
+Thus we have cleaned the data and removed the outliers by detection using IQR and Z-score method.
