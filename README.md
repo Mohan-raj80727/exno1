@@ -1,4 +1,4 @@
-### Ex. 1 Data Cleaning and Outlier Detection & Removal
+# Ex. 1 Data Cleaning and Outlier Detection & Removal
 
 # AIM
 To read the given data and perform data cleaning and save the cleaned data to a file.
@@ -20,6 +20,7 @@ STEP 5: Remove outliers using IQR
 STEP 6: Use zscore of to remove outliers
 
 # Coding and Output:
+# Data cleaning
 ~~~
 import pandas as pd
 exp=pd.read_csv("/content/SAMPLEIDS.csv")
@@ -59,7 +60,9 @@ exp_dropped
 exp.fillna({'NAME':'MOHAN','GENDER':'MALE','ADDRESS':'THIRUVOTTIYUR','M1':98,'M2':87,'M3':76,'M4':92,'TOTAL':305,'AVG':89.999999})
 ~~~
 ![image](https://github.com/user-attachments/assets/e47dcb72-4a0f-4526-a6cf-2b676f47450b)
-IQR(Inter Quartile Range)
+
+# IQR(Inter Quartile Range)
+
 ~~~
 import pandas as pd
 ir=pd.read_csv("/content/iris.csv")
@@ -97,7 +100,7 @@ sns.boxplot(x='sepal_width',data=o)
 ~~~
 ![image](https://github.com/user-attachments/assets/af2961e6-389c-405b-a72c-42e9c9721bdf)
 
-Z-Score
+# Z-Score
 
 ~~~
 import matplotlib.pyplot as plt
